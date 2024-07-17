@@ -3,27 +3,31 @@ const AboutPage = () => {
   const teamMembers = [
     {
       id: 1,
-      name: "Jane Doe",
-      role: "Designer",
+      name: "Ammaz Ahmad",
+      role: "Senior Frontend Developer",
       imageUrl: "https://via.placeholder.com/300",
+      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
     },
     {
       id: 2,
-      name: "John Smith",
-      role: "Developer",
+      name: "Ali Ahmad",
+      role: "Senior Backend Developer",
       imageUrl: "https://via.placeholder.com/300",
+      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
     },
     {
-      id: 2,
-      name: "John Smith",
-      role: "Developer",
+      id: 3,
+      name: "Muhammad Ahmad",
+      role: "Junior Backend Developer",
       imageUrl: "https://via.placeholder.com/300",
+      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
     },
     {
-      id: 2,
-      name: "John Smith",
-      role: "Developer",
+      id: 4,
+      name: "Kaleem Ullah",
+      role: "Junior Frontend Developer",
       imageUrl: "https://via.placeholder.com/300",
+      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
     },
   ];
   return (
@@ -43,15 +47,6 @@ const AboutPage = () => {
               explore new hobbies, or embark on a journey of personal
               development, we have something for everyone.
             </p>
-            {/* <div className="mt-8">
-              <a
-                href="#"
-                className="text-blue-500 hover:text-blue-600 font-medium"
-              >
-                Learn more about us
-                <span className="ml-2">&#8594;</span>
-              </a>
-            </div> */}
           </div>
           <div className="mt-12 md:mt-0">
             <img
@@ -64,7 +59,7 @@ const AboutPage = () => {
       </div>
       <div className="bg-rose-50 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h2 className="text-3xl font-semibold text-center mb-6">OUR TEAM</h2>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 text-center">
           {teamMembers.map((member) => (
             <div
               key={member.id}
@@ -86,50 +81,14 @@ const AboutPage = () => {
                   {member.role}
                 </p>
                 <p className="text-gray-500 text-base mt-4 text-center">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  {member.description}
                 </p>
-                <div className="mt-4 flex justify-center space-x-3">
-                  <a href="#">
-                    <svg
-                      className="w-6 h-6"
-                      fill="#000000"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M17 3.5a.5.5 0 0 0-.5-.5H14a4.77 4.77 0 0 0-5 4.5v2.7H6.5a.5.5 0 0 0-.5.5v2.6a.5.5 0 0 0 .5.5H9v6.7a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-6.7h2.62a.5.5 0 0 0 .49-.37l.72-2.6a.5.5 0 0 0-.48-.63H13V7.5a1 1 0 0 1 1-.9h2.5a.5.5 0 0 0 .5-.5z"
-                      />
-                    </svg>
-                  </a>
-                  <a href="#">
-                    <svg
-                      className="w-6 h-6"
-                      fill="#000000"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm-2 15.5v-9l8.5 4.8-8.5 4.8z" />
-                    </svg>
-                  </a>
-                  <a href="#">
-                    <svg
-                      className="w-6 h-6"
-                      fill="#000000"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm-2 15.5v-9l8.5 4.8-8.5 4.8z" />
-                    </svg>
-                  </a>
-                </div>
               </div>
             </div>
           ))}
         </div>
       </div>
-      <div className="py-12 bg-white">
+      <div className="py-12  bg-lime-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
             <h2 className="font-heading mb-4 bg-orange-100 text-black-800 px-4 py-2 rounded-lg md:w-64 md:mx-auto text-xs font-bold tracking-widest text-black uppercase title-font">
@@ -144,7 +103,7 @@ const AboutPage = () => {
             </p>
           </div>
 
-          <div className="mt-10">
+          <div className="mt-10 ">
             <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
               <div className="relative">
                 <dt>

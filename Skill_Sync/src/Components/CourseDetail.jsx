@@ -1,14 +1,32 @@
-import { Link, Navigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import ApiRequest from "../Axios/axios";
 
-function ProductDetail() {
-  const handleProceed=()=>{
-    
+const CourseDetail = () => {
+  const { courseId } = useParams();
+  const [course, setCourse] = useState([]);
+  useEffect(() => {
+    const fetchCourse = async () => {
+      try {
+        const response = await ApiRequest.get(`/course/${courseId}`);
+        setCourse(response.data.course);
+        console.log("Course fetched successfully: ", response.data.course);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+
+    fetchCourse();
+  }, [courseId]);
+  if (!course) {
+    return <div>Loading...</div>;
   }
+
   return (
     <section className="py-12 sm:py-16">
       <div className="container mx-auto px-4">
         <h1 className="sm: text-2xl font-bold text-gray-900 sm:text-3xl ">
-          Product Details
+          Course Details
         </h1>
         <div className="lg:col-gap-12 xl:col-gap-16 mt-8 grid grid-cols-1 gap-12 lg:mt-12 lg:grid-cols-5 lg:gap-16">
           <div className="lg:col-span-3 lg:row-end-1">
@@ -17,7 +35,7 @@ function ProductDetail() {
                 <div className="max-w-xl overflow-hidden rounded-lg">
                   <img
                     className="h-full w-full max-w-full object-cover"
-                    src="support.jpg"
+                    src={course.imageUrl}
                     alt=""
                   />
                 </div>
@@ -27,7 +45,7 @@ function ProductDetail() {
 
           <div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
             <h1 className="sm: text-2xl font-bold text-gray-900 sm:text-3xl">
-              Loream Ipsum JavaScript
+              {course.title}
             </h1>
 
             <h2 className="mt-8 text-base text-gray-900">
@@ -75,14 +93,13 @@ function ProductDetail() {
 
             <div className="mt-20 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
               <div className="flex items-end">
-                <h1 className="text-1xl font-bold">$Price</h1>{" "}
+                <h1 className="text-1xl font-bold">{course.price}</h1>{" "}
                 {/*props will come from Product card*/}
                 <span className="text-base">/month</span>
               </div>
 
               <button
                 type="button"
-                onClick={handleProceed}
                 className="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-5 py-2 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"
               >
                 <svg
@@ -173,6 +190,6 @@ function ProductDetail() {
       </div>
     </section>
   );
-}
+};
 
-export default ProductDetail;
+export default CourseDetail;

@@ -1,71 +1,60 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-use-history";
+import ApiRequest from "../Axios/axios.js";
 
 const CoursesCard = () => {
+  const [courses, setCourses] = useState([]);
+  const history = useHistory();
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await ApiRequest.get("/courses"); // Adjust endpoint as per your setup
+        setCourses(response.data.courses);
+        console.log("Courses fetched successfully: ", response.data.courses);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+
+    fetchCourses();
+  }, []);
+  const handleCourseClick = (courseId) => {
+    history.push(`/course-detail/${courseId}`);
+  };
   return (
-    <div className="grid md:grid-cols-3 w-100% md:h-[500px] p-4 mt-10">
-      {/** this is fontend course */}
-      <div className="w-100% h-[400px] mx-2 rounded-md border-2 shadow-md mb-4">
-        <img
-          src="font-end.jpg"
-          alt="font end"
-          className="rounded-md rounded-b-none w-[100%] h-[250px]"
-        />
-        <div className="flex flex-col gap-3 ml-3">
-          <h1 className="text-3xl font-semibold">Front-End Engineer</h1>
-          <p>HTML,CSS,JS and REACT.JS</p>
-          <div className="flex">
-            <Link
-              to="/product-detail"
-              className="p-3 bg-[#2980B9] text-white font-semibold rounded-md"
-            >
-              START LEARNING
-            </Link>
+    <>
+      <h1 className="mt-8 text-center font-heading  text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
+        Courses we offer
+      </h1>
+      <div className="grid md:grid-cols-3 gap-4 m-8">
+        {courses.map((course) => (
+          <div
+            key={course.id}
+            onClick={() => handleCourseClick(course.id)}
+            className="w-full h-[400px] rounded-md border-2 shadow-md mb-4"
+          >
+            <img
+              src={course.imageUrl}
+              alt=""
+              className="rounded-md rounded-b-none w-full h-[250px]"
+            />
+            <div className="flex flex-col gap-3 ml-3">
+              <h1 className="text-3xl font-semibold">{course.title}</h1>
+              <p>{course.description}</p>
+              <div className="flex">
+                <Link
+                  to={`/course-detail/${course.id}`}
+                  className="p-3 bg-[#2980B9] text-white font-semibold rounded-md"
+                >
+                  START LEARNING
+                </Link>
+              </div>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
-
-      {/** this is backen course */}
-      <div className="w-100% h-[400px] mx-2 rounded-md border-2 shadow-md mb-4">
-        <img
-          src="back-end.jpeg"
-          alt="back end"
-          className="rounded-md rounded-b-none w-[100%] h-[250px]"
-        />
-        <div className="flex flex-col gap-3 ml-3 h-[250px]">
-          <h1 className="text-3xl font-semibold">Back-End Engineer</h1>
-          <p>NODE.JS EXPRESS.JS</p>
-          <div className="flex">
-            <Link
-              to="/product-detail"
-              className="p-3 bg-[#2980B9] text-white font-semibold rounded-md"
-            >
-              START LEARNING
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/** this is full stack course */}
-      <div className="w-100% h-[400px] mx-2 rounded-md border-2 shadow-md">
-        <img
-          src="full-stack.jpeg"
-          alt="full stack"
-          className="rounded-md rounded-b-none w-[100%] h-[250px]"
-        />
-        <div className="flex flex-col gap-3 ml-3">
-          <h1 className="text-3xl font-semibold">Full Stack Engineer</h1>
-          <p>HTML,CSS,JS and REACT.JS,NODE.JS</p>
-          <div className="flex">
-            <Link
-              to="/product-detail"
-              className="p-3 bg-[#2980B9] text-white font-semibold rounded-md"
-            >
-              START LEARNING
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 

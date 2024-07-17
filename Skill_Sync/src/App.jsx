@@ -7,7 +7,7 @@ import LoginComponent from "./Pages/Login.jsx";
 import CheckoutPage from "./Pages/Checkout.jsx";
 import { AuthProvider } from "./Utills/authContext.jsx";
 import DefaultLayout from "./Layout/defaultLayout.jsx";
-import ProductDetail from "./Components/ProductDetail.jsx";
+// import CourseDetail from "./Components/CourseDetail.jsx";
 
 import CoursesCard from "./Pages/CoursesCard.jsx";
 import TermsAndConditions from "./Components/TermsAndConditions.jsx";
@@ -21,11 +21,10 @@ function App() {
             <Route path="/register" element={<RegisterComponent />} />
             <Route path="/login" element={<LoginComponent />} />
             <Route path="/about-us" element={<AboutPage />} />
-            {/* <Route path="/courses" element={<Courses />} /> */}
             <Route path="/courses" element={<CoursesCard />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/terms" element={<TermsAndConditions />} />
-            <Route path="/product-detail" element={<ProductDetail />} />
+            {/* <Route path="/course-detail" element={<CourseDetail />} /> */}
           </Routes>
         </DefaultLayout>
       </AuthProvider>
