@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import DefaultLayout from "../Layout/defaultLayout";
 const HomePage = () => {
   return (
@@ -26,7 +26,7 @@ const HomePage = () => {
               tools you need to succeed.
             </p>
             <button className="mt-8 text-white uppercase py-4 text-base font-light px-10 border border-white hover:bg-white hover:bg-opacity-10">
-              Get started
+              <Link to={"/courses"}>Get started</Link>
             </button>
           </div>
         </div>
@@ -45,7 +45,7 @@ const HomePage = () => {
             </p>
           </div>
           <button className="text-sky-950 uppercase py-3 text-base px-10 border border-sky-950 hover:bg-sky-950 hover:bg-opacity-10">
-            Get started
+            <Link to={"/courses"}>Get started</Link>
           </button>
         </div>
       </div>
@@ -76,7 +76,7 @@ const HomePage = () => {
                 nibh cras pulvinar.
               </p>
               <button className="mt-8 text-white uppercase py-3 text-sm px-10 border border-white hover:bg-white hover:bg-opacity-10">
-                Talk with expert
+                <Link to={"/contact"}>Talk with expert</Link>
               </button>
             </div>
           </div>
@@ -95,7 +95,7 @@ const HomePage = () => {
                 today. Browse our courses or sign up to get started.
               </p>
               <button className="mt-8 text-sky-950 uppercase py-3 text-sm px-10 border border-sky-950 hover:bg-white hover:bg-opacity-10">
-                Explore
+                <Link to={"/about-us"}>Explore More</Link>
               </button>
             </div>
           </div>

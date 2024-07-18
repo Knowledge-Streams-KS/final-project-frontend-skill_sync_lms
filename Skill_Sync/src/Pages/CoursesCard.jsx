@@ -9,7 +9,7 @@ const CoursesCard = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await ApiRequest.get("/courses"); // Adjust endpoint as per your setup
+        const response = await ApiRequest.get("/courses");
         setCourses(response.data.courses);
         console.log("Courses fetched successfully: ", response.data.courses);
       } catch (error) {
@@ -20,19 +20,19 @@ const CoursesCard = () => {
     fetchCourses();
   }, []);
   const handleCourseClick = (courseId) => {
-    history.push(`/course-detail/${courseId}`);
+    history.push(`/course/${courseId}`);
   };
   return (
     <>
       <h1 className="mt-8 text-center font-heading  text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
         Courses we offer
       </h1>
-      <div className="grid md:grid-cols-3 gap-4 m-8">
+      <div className="grid md:grid-cols-3 gap-4 m-8 ">
         {courses.map((course) => (
           <div
             key={course.id}
             onClick={() => handleCourseClick(course.id)}
-            className="w-full h-[400px] rounded-md border-2 shadow-md mb-4"
+            className="w-full h-[440px] rounded-md border-2 shadow-md mb-4"
           >
             <img
               src={course.imageUrl}
@@ -42,9 +42,10 @@ const CoursesCard = () => {
             <div className="flex flex-col gap-3 ml-3">
               <h1 className="text-3xl font-semibold">{course.title}</h1>
               <p>{course.description}</p>
+              <p className="font-bold">Rs.{course.price}</p>
               <div className="flex">
                 <Link
-                  to={`/course-detail/${course.id}`}
+                  to={`/course/${course.id}`}
                   className="p-3 bg-[#2980B9] text-white font-semibold rounded-md"
                 >
                   START LEARNING
