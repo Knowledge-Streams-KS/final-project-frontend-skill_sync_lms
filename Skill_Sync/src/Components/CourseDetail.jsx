@@ -6,10 +6,11 @@ const CourseDetail = () => {
   const { courseId } = useParams();
   const [course, setCourse] = useState([]);
   useEffect(() => {
+    console.log(courseId, "courseId");
     const fetchCourse = async () => {
       try {
         const response = await ApiRequest.get(`/course/${courseId}`);
-        setCourse(response.data.course);
+        setCourse(response.data);
         console.log("Course fetched successfully: ", response.data.course);
       } catch (error) {
         console.error("Error fetching data: ", error);
@@ -19,7 +20,7 @@ const CourseDetail = () => {
     fetchCourse();
   }, [courseId]);
   if (!course) {
-    return <div>Loading...</div>;
+    return <div>Loading.......</div>;
   }
 
   return (
